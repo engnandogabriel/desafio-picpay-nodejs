@@ -1,0 +1,55 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# Editor/IDE
+.vscode/
+.idea/
+*.sublime-*
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Build output
+/dist/
+/out/
+/build/
+
+# Logs and results
+logs/
+*.log
+npm-debug.log*
+
+# Dependencies
+.pnp/
+.pnp.js
+
+# TypeScript
+*.tsbuildinfo
+
+# Test files
+__tests__/
+test/
+
+# Output of 'npm run build'
+lib/
+
+# Output of 'npm run coverage'
+coverage/
+
+# Output of 'npm run lint'
+output/
+
+# OS and IDE generated files
+.DS_Store
+Thumbs.db
+*.pidb
+*.pids
+*.pidb.meta
+*.stackdump
