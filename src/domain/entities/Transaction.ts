@@ -1,10 +1,11 @@
 import { v4 as uuidV4 } from "uuid";
+import User from "./User";
 
 export default class Transaction {
   public readonly id?: string;
   public readonly value: number;
-  public readonly payer: string;
-  public readonly payee: string;
+  public readonly payer: User;
+  public readonly payee: User;
   public readonly created_at: Date;
 
   constructor(transaction: Omit<Transaction, "id">, id?: string) {

@@ -1,19 +1,40 @@
 import Transaction from "./Transaction";
+import User from "./User";
 
 describe("Transaction", () => {
   it("should create a valid transaction", () => {
+    const payerUser = new User({
+      firstName: "John",
+      lastName: "Doe",
+      document: "12345678901",
+      email: "john@example.com",
+      password: "securepassword",
+      balance: 1000,
+      typeUser: "common",
+    });
+
+    const payeeUser = new User({
+      firstName: "Marcos",
+      lastName: "Doe",
+      document: "12345678902",
+      email: "marcos@example.com",
+      password: "securepassword",
+      balance: 1000,
+      typeUser: "merchant",
+    });
+
     const transactionData = {
       value: 100,
-      payer: "Alice",
-      payee: "Bob",
+      payer: payerUser,
+      payee: payeeUser,
       created_at: new Date(),
     };
 
     const transaction = new Transaction(transactionData);
 
     expect(transaction.value).toBe(100);
-    expect(transaction.payer).toBe("Alice");
-    expect(transaction.payee).toBe("Bob");
+    expect(transaction.payer.firstName).toBe("John");
+    expect(transaction.payee.firstName).toBe("Marcos");
     expect(transaction.created_at).toBe(transactionData.created_at);
     expect(transaction.id).toBeDefined();
   });
