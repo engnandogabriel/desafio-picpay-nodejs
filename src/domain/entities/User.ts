@@ -39,7 +39,7 @@ export default class User {
   }
 
   private validateUserType(typeUser: string) {
-    if (typeUser !== "common" && typeUser !== "merchan") {
+    if (typeUser !== "common" && typeUser !== "merchant") {
       throw new Error("Type User is invalid.");
     }
     return typeUser;
