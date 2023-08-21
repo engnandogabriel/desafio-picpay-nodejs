@@ -1,14 +1,14 @@
 import { v4 as uuidV4 } from "uuid";
 
 export default class User {
-  private id: string;
-  public readonly firstName: string;
-  public readonly lastName: string;
-  public readonly document: string;
-  public readonly email: string;
-  public readonly password: string;
-  public readonly balance: number;
-  public readonly typeUser: string;
+  public id: string;
+  public firstName: string;
+  public lastName: string;
+  public document: string;
+  public email: string;
+  public password: string;
+  public balance: number;
+  public typeUser: string;
 
   constructor(user: Omit<User, "id">, id?: string) {
     if (!user.firstName) throw new Error("Firstname is required");
