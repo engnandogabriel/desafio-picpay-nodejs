@@ -9,6 +9,7 @@ import CreateTransaction from "../../data/services/CreateTransaction/CreateTrans
 import CreateTransactionController from "../controllers/CreateTransacrionController";
 import GetTransaction from "../../data/services/GetTransaction/GetTransaction";
 import GetTransactionController from "../controllers/GetTransactionController";
+import AuthorizationTransactionService from "../../data/services/AuthorizationTransaction/AuthorizationTransaciton";
 
 const router = Router();
 const userDb = new UserDb();
@@ -27,7 +28,12 @@ router.get("/user", async (req, res) => {
 });
 
 router.post("/transaction", async (req, res) => {
-  const createTransaction = new CreateTransaction(transactionDb, userDb);
+  const authorizationTransactionService = new AuthorizationTransactionService();
+  const createTransaction = new CreateTransaction(
+    transactionDb,
+    userDb,
+    authorizationTransactionService
+  );
   const createTranactionController = new CreateTransactionController(
     createTransaction
   );
