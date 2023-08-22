@@ -17,9 +17,12 @@ describe("CreateUser", () => {
   it("should create a new user when valid data is provided", async () => {
     const mockUserRepository: UserRepository = {
       findByEmail: jest.fn().mockResolvedValue(null),
+      findPayer: jest.fn().mockResolvedValue(null),
+      findPayee: jest.fn().mockResolvedValue(null),
       findByDocument: jest.fn().mockResolvedValue(null),
       save: jest.fn().mockResolvedValue(userData),
       getUsers: jest.fn().mockResolvedValue([]),
+      correctionValues: jest.fn().mockResolvedValue(null),
     };
 
     const createUser = new CreateUser(mockUserRepository);
@@ -36,10 +39,13 @@ describe("CreateUser", () => {
 
   it("should throw an error if email already exists", async () => {
     const mockUserRepository: UserRepository = {
-      findByEmail: jest.fn().mockResolvedValue(userData),
+      findByEmail: jest.fn().mockResolvedValue(null),
+      findPayer: jest.fn().mockResolvedValue(null),
+      findPayee: jest.fn().mockResolvedValue(null),
       findByDocument: jest.fn().mockResolvedValue(null),
       save: jest.fn().mockResolvedValue(userData),
       getUsers: jest.fn().mockResolvedValue([]),
+      correctionValues: jest.fn().mockResolvedValue(null),
     };
 
     const createUser = new CreateUser(mockUserRepository);
@@ -52,9 +58,12 @@ describe("CreateUser", () => {
   it("should throw an error if document already exists", async () => {
     const mockUserRepository: UserRepository = {
       findByEmail: jest.fn().mockResolvedValue(null),
-      findByDocument: jest.fn().mockResolvedValue({}),
+      findPayer: jest.fn().mockResolvedValue(null),
+      findPayee: jest.fn().mockResolvedValue(null),
+      findByDocument: jest.fn().mockResolvedValue(null),
       save: jest.fn().mockResolvedValue(userData),
       getUsers: jest.fn().mockResolvedValue([]),
+      correctionValues: jest.fn().mockResolvedValue(null),
     };
 
     const createUser = new CreateUser(mockUserRepository);
@@ -77,9 +86,12 @@ describe("CreateUser", () => {
 
     const mockUserRepository: UserRepository = {
       findByEmail: jest.fn().mockResolvedValue(null),
+      findPayer: jest.fn().mockResolvedValue(null),
+      findPayee: jest.fn().mockResolvedValue(null),
       findByDocument: jest.fn().mockResolvedValue(null),
-      save: jest.fn().mockResolvedValue(user),
+      save: jest.fn().mockResolvedValue(userData),
       getUsers: jest.fn().mockResolvedValue([]),
+      correctionValues: jest.fn().mockResolvedValue(null),
     };
     const createUser = new CreateUser(mockUserRepository);
 
