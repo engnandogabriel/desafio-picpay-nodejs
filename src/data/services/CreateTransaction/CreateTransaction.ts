@@ -3,11 +3,13 @@ import Transaction from "../../../domain/entities/Transaction";
 import CreateTransactionUseCase from "../../../domain/useCases/CreateTransactionUseCase";
 import TransactionRepository from "../../Contracts/TransactionRepostiroty";
 import { UserRepository } from "../../Contracts/UserRepository";
+import AuthorizationTransactionService from "../AuthorizationTransaction/AuthorizationTransaciton";
 
 export default class CreateTransaction implements CreateTransactionUseCase {
   constructor(
     readonly transactionRepository: TransactionRepository,
-    readonly userRepository: UserRepository
+    readonly userRepository: UserRepository,
+    readonly authorizationTransactionService: AuthorizationTransactionService
   ) {}
 
   async execute(data: CreateTransectionDTO): Promise<void | Transaction> {
@@ -34,6 +36,10 @@ export default class CreateTransaction implements CreateTransactionUseCase {
         created_at: new Date(),
       });
 
+      const authorizationTransaciton =
+        await this.authorizationTransactionService.execute();
+      if (authorizationTransaciton.message != "Autorizado")
+        throw new Error("You are not authorized for this transaction");
       await this.userRepository.correctionValues(payer, payee, data.value);
       await this.transactionRepository.createTranaction(transaction);
     } catch (error) {
