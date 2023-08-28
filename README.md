@@ -11,7 +11,7 @@ O sistema foi desenvolvido usando clean architecture, banco de dados em memória
 
 rode os seguintes comandos no terminal
 ```
-git clone github.com/engnandogabriel/desafio-picpay-nodejs
+git clone git@github.com:engnandogabriel/desafio-picpay-nodejs.git
 npm i 
 npm run test
 ```
